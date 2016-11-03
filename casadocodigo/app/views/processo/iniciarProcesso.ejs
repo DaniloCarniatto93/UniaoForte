@@ -1,0 +1,129 @@
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/autentica/principal">União Forte</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/autentica/sair" method="post">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+     <form class="form-horizontal" action="/principal/IniciarProcesso/parte2" method="post">
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    
+    </br>
+    </br>
+    </br>
+    </br>
+
+  
+    <div class="row">
+ 	 <div class="col-md-6 col-md-offset-3">
+  		<center><h1><strong>Nome do Processo<Strong></h1><center> 
+
+  		<input type="text" class="form-control" name="noprocess" id="noprocess" ></input>
+  		</div>
+  </div>
+
+
+    
+    </br>
+    </br>
+    </br>
+    </br>
+
+    
+    <h1>Observações do Processo</h1>
+    <table name="obs" id="obs" class="table table-bordered">
+    <tbody>
+    <tr>
+    <td>Ordem</td>
+	<td>Ação</td>
+	<td>Responsável</td>
+	<td>Status</td>
+	<td>Tempo</td>
+	<tr>
+	</tbody>
+	</table>
+	</br>
+	</br>
+	
+	<button class="btn btn-default" type="button" id="adob" name="adob">adicionar</button>
+	<button class="btn btn-default" type="button" id="remover" name="remover">remover</button>
+
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	<input class="btn btn-default" name="arquivo" id="arquivo" type=file />
+	</br>
+	</br>
+	</br>
+</br>
+
+<button type="subit" class="btn btn-default">Enviar</button>
+  </br>
+  </br>
+  </br>
+
+
+
+
+<script type="text/javascript">
+var cont = 0;
+
+	$("#adob").click(function() {
+		cont = cont+1;
+		var x = "<tr name='linha' id='linha'><td><p>"+cont+"<p></td><td><input name='acao' type='text'></input></td><td><input name='respon' type='text'></input></td><td><input name='sta' type='text'></input></td><td><input name='tem' type='text'></input></td></tr>";
+		
+		$('#obs').append(x);
+ });
+	$("#remover").click(function(){
+        $("#linha"+cont+"").remove();
+        cont=cont-1;
+    });
+</script>
+
+</form>
+<html>

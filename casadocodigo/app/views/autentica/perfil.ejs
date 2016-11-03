@@ -1,0 +1,98 @@
+<html>
+	  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/autentica/principal">União Forte</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/autentica/sair" method="post">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <br/><br/>
+
+    <form class="row">
+    <form calss="col-md-4">
+      <button type="button" name="cadusuario" id="cadusuario">Cadastrar Usuário</button>
+    </form>
+    </form>
+    <form class="form-horizontal" action="/autentica/cadastra" method="post">
+    <h1 style="text-align: center">Profile<h1>
+    <br/><br/>
+    <fieldset style="margin-right: 150px; margin-left: 150px;">
+      <div class="row">
+      <div class="col-md-4">
+      Nome : <input style="display: inline" class="form-control" name="Nome" id="Nome"></input>
+       </div>
+          <div class="col-md-4">
+          Idade : <input type="int" style="display: inline" class="form-control" name="Idade"
+            id="Idade"></input>
+        </div>  
+      </div>
+      <br/>
+      <div class="row">
+      <div class="col-md-4">
+        <p style="text-align: left; display: inline">
+          Sexo :<select name="sexoselec" id="sexoselec" type="radio" class="form-control">
+            <option name="sexo_1" id="sexo_1">Feminino</option>
+            <option name="sexo_1" id="sexo_1">Masculino</option>
+          </select>
+        </p>
+        </div>
+        </div> 
+        <br/>
+        <div class="row">
+        <div class="col-md-4">
+        <p style="text-align: left; display: inline">
+        Login :<input type="text" style="display: inline" class="form-control" name="login" id="login"></input>
+        </div>
+        </p>
+      <div class="col-md-4">
+        <p style="text-align: left; display: inline">
+          Senha :<input type="text" style="display: inline" class="form-control" name="senha"
+            id="senha"></input>
+        </p>
+        </div>
+        </div>   
+          <br/>
+          <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Entrar</button>
+    </div>
+  </div>
+      </fieldset>
+</form>
+	</body>
+</html>
