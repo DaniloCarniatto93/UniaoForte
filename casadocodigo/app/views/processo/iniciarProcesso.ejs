@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Iniciar Processo</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -44,7 +44,7 @@
         </div>
       </div>
     </nav>
-     <form class="form-horizontal" action="/principal/IniciarProcesso/parte2" method="post">
+     <form class="form-horizontal" action="/principal/IniciarProcesso/parte2" method="post" enctype="multipart/form-data">
     </br>
     </br>
     </br>
@@ -81,7 +81,6 @@
 	<td>Ação</td>
 	<td>Responsável</td>
 	<td>Status</td>
-	<td>Tempo</td>
 	<tr>
 	</tbody>
 	</table>
@@ -115,7 +114,7 @@ var cont = 0;
 
 	$("#adob").click(function() {
 		cont = cont+1;
-		var x = "<tr name='linha' id='linha'><td><p>"+cont+"<p></td><td><input name='acao' type='text'></input></td><td><input name='respon' type='text'></input></td><td><input name='sta' type='text'></input></td><td><input name='tem' type='text'></input></td></tr>";
+		var x = "<tr name='linha"+cont+"' id='linha"+cont+"'><td><p>"+cont+"<p></td><td><input class='form-control' name='acao' type='text'></input></td><td><select name='respon' type='text' class='form-control'><option>danilo.carniatto@mirconsultoria.com.br</option><option>comercial@uniaoforteusinagem.com.br</option></select></td><td><select class='form-control' name='sta' type='text'><option>Aberto</option><option>Fechado</option></select></td></tr>";
 		
 		$('#obs').append(x);
  });

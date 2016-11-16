@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Meus Processos</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -62,12 +62,22 @@
   </tr>
   <%for(var i=0;i<dados.length;i++) {%>
   <form class="form-horizontal" action="/realizar/processo" method="post">
+
+  <input name="key" type="hidden" value=<%=dados[i].key%>></input>
+  <input name="causaCancelamento"  type="hidden" value=<%=dados[i].causaCancelamento%>></input>
+  <input name="causaPausa" type="hidden" value=<%=dados[i].causaPausa%>></input>
+  <input name="processo" type="hidden" value=<%=dados[i].noprocess%>></input>
+   <input name="acao" type="hidden" value=<%=dados[i].acao%>></input>     
+<input name="responsavel" type="hidden" value=<%=dados[i].respon%>></input>
+<input name="status" type="hidden" value=<%=dados[i].sta%>></input>
+<input name="tempo" type="hidden" value=<%=dados[i].tem%>></input>
+<input name="arquivo" type="hidden" value=<%=dados[i].arquivo%>></input>
         <tr>
-          <td ><input name="processo" value=<%=dados[i].noprocess%>></input></td>
-          <td ><input name="acao" value=<%=dados[i].acao%>></input></td>
-          <td ><input name="responsavel" value=<%=dados[i].respon%>></input></td>
-          <td ><input name="status" value=<%=dados[i].sta%>></input></td>
-          <td ><input name="tempo" value=<%=dados[i].tem%>></input></td>
+          <td ><%=dados[i].noprocess%></td>
+          <td ><%=dados[i].acao%></td>
+          <td ><%=dados[i].respon%></td>
+          <td ><%=dados[i].sta%></td>
+          <td ><%=dados[i].tem%></td>
           <td><button type="submit" class="btn btn-default">Realizar Processo</button><td>
         </tr>
         </form>

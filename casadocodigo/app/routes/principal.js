@@ -60,6 +60,7 @@ app.post('/autentica/cadastra',function(req,res){
 			res.render('processo/processosEmAberto',{dados});
 		}
 		
+		
 		var dados =[];
 
 	var conexao = app.infra.connectionFirebase;
@@ -67,24 +68,27 @@ app.post('/autentica/cadastra',function(req,res){
 	conexao.auth().onAuthStateChanged(function(user) {
 		var ref = conexao.database().ref("processos");
 var cont = 0;
-	ref.orderByChild("respon").equalTo(user.email).on("child_added", function(snapshot) {
+	ref.orderByChild("sta").on("child_added", function(snapshot) {
+
+
 		var acao = snapshot.val().acao;
 		var noprocess = snapshot.val().noprocess;
 		var respon= snapshot.val().respon;
 		var	sta = snapshot.val().sta;
 		var	tem = snapshot.val().tem;
 		
-
+	if(sta == "Aberto"|| sta=="Em Andamento"|| sta=="pausado"){
 		dados[cont] = { acao: acao,
 					noprocess: noprocess,
 					respon: respon,
 					sta : sta,
 					tem : tem
 				};	
-
+}
 				console.log(cont);
 		cont++;		
   	  });
+
 	
 		console.log(cont);
 	console.log(dados);
@@ -118,44 +122,70 @@ var cont = 0;
 			res.render('processo/meusProcessos',{dados});
 		}
 		
+		
 		var dados =[];
 
 	var conexao = app.infra.connectionFirebase;
 
 	conexao.auth().onAuthStateChanged(function(user) {
 		var ref = conexao.database().ref("processos");
-var cont = 0;
+		
+	var cont = 0;
 	ref.orderByChild("respon").equalTo(user.email).on("child_added", function(snapshot) {
+		var key = snapshot.key;
 		var acao = snapshot.val().acao;
 		var noprocess = snapshot.val().noprocess;
 		var respon= snapshot.val().respon;
 		var	sta = snapshot.val().sta;
 		var	tem = snapshot.val().tem;
-		
-		if(sta == "Aberto"){
+		var causaPausa = snapshot.val().causaPausa;
+		var causaCancelamento = snapshot.val().causaCancelamento;
+		var arquivo = snapshot.val().arquivo;
+
+ 		
+		if(sta == "Aberto" || sta == "pausado" || sta == "Em Andamento"){
 
 		dados[cont] = { acao: acao,
 					noprocess: noprocess,
 					respon: respon,
 					sta : sta,
-					tem : tem
+					tem : tem,
+					key : key,
+					causaPausa : causaPausa,
+					causaCancelamento : causaCancelamento,
+					arquivo: arquivo
 				};	
 				cont++;	
 }
+
 				console.log(cont);
+				console.log(dados);
 			
   	  });
-	
-		console.log(cont);
-	console.log(dados);
 
-	recebe(dados)
+	
+	recebe(dados);
 
 });
 
 
 
 
+	});
+
+
+	app.get('/principal/SolicitarMaterias',function(req,res){
+
+		var conexao = app.infra.connectionFirebase;
+			conexao.auth().onAuthStateChanged(function(user) {
+		  if (user) {
+		  res.render('material/SolicitarMaterial',{user});
+		  } else {
+		    res.render('autentica/login');
+		  }
+		});
+
+		
 	});
 
 }

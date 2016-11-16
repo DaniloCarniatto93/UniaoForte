@@ -1,4 +1,4 @@
->
+<html>
 	  <head>
 
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Realizar Processo</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -43,6 +43,7 @@
     </nav>
   <br/><br/>
   <br/><br/>
+ <form name="crono" class="form-horizontal" action="/processo/telaPausa" method="post">
 
   <center><h1>Processo de <%=dados.processo%></h1></center>
 
@@ -57,28 +58,86 @@
 </div>
 <div class="row">
 <div class="col-md-2">
-  <h2><strong> Arquivo : </strong></h2>
-  <div class="col-md-4">
-  <h3><%=dados.acao%></h3>
+  <h2><strong> Arquivo : </strong></h2><a href="/uploads/arquivo-1479228299685.png" download="w3logo">Clique aqui para fazer download da imagem</a>
   </div>
 </div>
-</div>
-
-
-
 <br/><br/>
-  <br/><br/><br/><br/>
   <br/><br/>
+  <input type="hidden" name="responsavel" id="responsavel" value=<%=dados.responsavel%>>
+  <input type="hidden" name="acao" id="acao" value=<%=dados.acao%>>
+  <input type="hidden" name="processo" id="processo" value=<%=dados.processo%>>
+  <input type="hidden" name="key" id="key" value=<%=dados.key%>>
+  <input type="hidden" name="causaPausa" id="causaPausa" value=<%=dados.causaPausa%>>
+  <input type="hidden" name="causaCancelamento" id="causaCancelamento" value=<%=dados.causaCancelamento%>>
+
+
+
+
 <div class="row">
 <div class="col-md-2">
-<button>Iniciar</button>
-  </div>
-  <div class="col-md-2">
-<button>Pausar</button>
-  </div>
-  <div class="col-md-2">
-<button>Cancelar</button>
-  </div>
+
+<strong><input style="color:red" class="form-control" type="text" size="7" name="face" id="face" title="Cronómetro"></input></strong>
+<script language="JavaScript">
+
+var timeCrono; 
+var hor = <%=dados.hora%>;
+var min = <%=dados.minuto%>;
+var seg = <%=dados.segundo%>;
+
+var startTime = new Date(); 
+var start = startTime.getSeconds();
+StartCrono();
+function StartCrono() {
+if (seg + 1 > 59) { 
+min+= 1 ;
+}
+if (min > 59) {
+min = 0;
+hor+= 1;
+}
+var time = new Date(); 
+if (time.getSeconds() >= start) {
+seg = time.getSeconds() - start;
+} 
+else {
+seg = 60 + (time.getSeconds() - start);
+}
+timeCrono= (hor < 10) ? "0" + hor : hor;
+timeCrono+= ((min < 10) ? ":0" : ":") + min;
+timeCrono+= ((seg < 10) ? ":0" : ":") + seg;
+document.crono.face.value = timeCrono;
+//document.getElementById("face1").value = timeCrono;
+setTimeout("StartCrono()",1000);
+}
+function chama(){
+
+  var relogio = document.getElementById("face").value;
+
+  var x = document.getElementById("face1").value = relogio;
+
+  alert(x);
+}
+</script>
+</form>
 </div>
-  </body>
+
+<div class="col-md-4">
+<button class="btn btn-default" type="submit">Pausar</button>
+  </div>
+  </form>
+  <form name="teste" class="form-horizontal" action="/processo/telaCancelar" method="post">
+  <input type="hidden" name="responsavel" id="responsavel" value=<%=dados.responsavel%>>
+  <input type="hidden" name="acao" id="acao" value=<%=dados.acao%>>
+  <input type="hidden" name="processo" id="processo" value=<%=dados.processo%>>
+  <input type="hidden" name="key" id="key" value=<%=dados.key%>>
+  <input type="hidden" name="causaPausa" id="causaPausa" value=<%=dados.causaPausa%>>
+  <input type="hidden" name="causaCancelamento" id="causaCancelamento" value=<%=dados.causaCancelamento%>>
+  <input type="hidden" size="7" name="face1" id="face1"></input>
+  <div class="col-md-4">
+<button class="btn btn-default" onclick="chama()" type="submit">Cancelar</button>
+  </div>
+  </form>
+</div>
+
+</body>
 </html>
